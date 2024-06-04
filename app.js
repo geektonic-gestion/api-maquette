@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: function(origin, callback){
-    const whitelist = ['http://localhost:4200', 'https://maquettes.geek-tonic.dev'];
+    const whitelist = ['http://localhost:4200', 'https://maquettes.geek-tonic.dev', 'https://api-maquette.onrender.com'];
     if(whitelist.indexOf(origin) !== -1){
       callback(null, true)
     } else {
