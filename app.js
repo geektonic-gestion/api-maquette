@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: function(origin, callback){
-    const whitelist = ['http://localhost:4200', 'https://maquettes.geek-tonic.dev', 'https://api-maquette.onrender.com'];
+    const whitelist = ['http://localhost:4200', 'https://maquettes.geek-tonic.dev', 'https://api-maquette.onrender.com', ];
     if(whitelist.indexOf(origin) !== -1){
       callback(null, true)
     } else {
@@ -22,7 +22,9 @@ app.use(cors({
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true,
+  optionsSuccessStatus: 200
 }));
 
 app.use("/auth", authRoutes);
