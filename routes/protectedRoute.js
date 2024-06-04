@@ -3,21 +3,6 @@ const router = express.Router();
 const verifyToken = require('../middleware/authMiddleware');
 const User = require('../models/User');
 const bcrypt = require("bcryptjs");
-const cors = require('cors');
-
-router.use(cors({
-  origin: function(origin, callback){
-    const whitelist = ['http://localhost:4200', 'https://maquettes.geek-tonic.dev', 'https://api-maquette.onrender.com'];
-
-    if(whitelist.indexOf(origin) !== -1){
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
 // Protected route
 router.get('/', verifyToken, (req, res) => {

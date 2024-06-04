@@ -3,19 +3,8 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const cors = require('cors');
 require('dotenv').config();
 
-router.use(cors({
-  origin: function(origin, callback){
-    const whitelist = ['http://localhost:4200', 'https://maquettes.geek-tonic.dev', 'https://api-maquette.onrender.com'];
-    if(whitelist.indexOf(origin) !== -1){
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}));
 
 // User registration
 // router.post("/register", async (req, res) => {
