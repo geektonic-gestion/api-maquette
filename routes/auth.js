@@ -39,6 +39,12 @@ require('dotenv').config();
 //   }
 // });
 
+// Hello world debugging
+router.get("/", (req, res) => {
+  console.log('GET /auth/ called');
+  res.send("Hello World!");
+});
+
 // User login
 router.post("/login", async (req, res) => {
   try {
